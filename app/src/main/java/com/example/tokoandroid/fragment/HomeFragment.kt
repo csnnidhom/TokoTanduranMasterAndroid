@@ -19,6 +19,8 @@ class HomeFragment : Fragment() {
 
     lateinit var vpSlider: ViewPager
     lateinit var rvProduk: RecyclerView
+    lateinit var rvProdukTerlaris: RecyclerView
+    lateinit var rvProdukUnggulan: RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,6 +30,8 @@ class HomeFragment : Fragment() {
 
         vpSlider = view.findViewById(R.id.vp_slider)
         rvProduk = view.findViewById(R.id.rv_produk)
+        rvProdukTerlaris = view.findViewById(R.id.rv_produkTerlaris)
+        rvProdukUnggulan = view.findViewById(R.id.rv_produkUnggulan)
 
         val arrSlider=ArrayList<Int>()
         arrSlider.add(R.drawable.slider3)
@@ -40,8 +44,20 @@ class HomeFragment : Fragment() {
         val layoutManager = LinearLayoutManager(activity)
         layoutManager.orientation = LinearLayoutManager.HORIZONTAL
 
+        val layoutManager2= LinearLayoutManager(activity)
+        layoutManager2.orientation = LinearLayoutManager.HORIZONTAL
+
+        val layoutManager3= LinearLayoutManager(activity)
+        layoutManager3.orientation = LinearLayoutManager.HORIZONTAL
+
         rvProduk.adapter = AdapterProduk(arrProduk)
         rvProduk.layoutManager = layoutManager
+
+        rvProdukTerlaris.adapter = AdapterProduk(arrProdukTerlaris)
+        rvProdukTerlaris.layoutManager = layoutManager2
+
+        rvProdukUnggulan.adapter = AdapterProduk(arrProdukUnggulan)
+        rvProdukUnggulan.layoutManager = layoutManager3
 
         return view
     }
@@ -50,17 +66,17 @@ class HomeFragment : Fragment() {
         val arr=ArrayList<Produk>()
         val p1=Produk()
         p1.nama="bunga 1"
-        p1.harga="Rp 100.00"
+        p1.harga="Rp 100.000"
         p1.gambar=R.drawable.bunga1
 
         val p2=Produk()
         p2.nama="bunga 2"
-        p2.harga="Rp 200.00"
+        p2.harga="Rp 200.000"
         p2.gambar=R.drawable.bunga2
 
         val p3=Produk()
         p3.nama="bunga 3"
-        p3.harga="Rp 300.00"
+        p3.harga="Rp 300.000"
         p3.gambar=R.drawable.bunga3
 
         arr.add(p1)
@@ -70,4 +86,51 @@ class HomeFragment : Fragment() {
         return arr
     }
 
+    val arrProdukTerlaris: ArrayList<Produk>get(){
+        val arr=ArrayList<Produk>()
+        val p1=Produk()
+        p1.nama="bunga 4"
+        p1.harga="Rp 400.000"
+        p1.gambar=R.drawable.bunga4
+
+        val p2=Produk()
+        p2.nama="bunga 5"
+        p2.harga="Rp 500.000"
+        p2.gambar=R.drawable.bunga5
+
+        val p3=Produk()
+        p3.nama="bunga 6"
+        p3.harga="Rp 600.000"
+        p3.gambar=R.drawable.bunga6
+
+        arr.add(p1)
+        arr.add(p2)
+        arr.add(p3)
+
+        return arr
+    }
+
+    val arrProdukUnggulan: ArrayList<Produk>get(){
+        val arr=ArrayList<Produk>()
+        val p1=Produk()
+        p1.nama="bunga 7"
+        p1.harga="Rp 700.000"
+        p1.gambar=R.drawable.bunga7
+
+        val p2=Produk()
+        p2.nama="bunga 5"
+        p2.harga="Rp 800.000"
+        p2.gambar=R.drawable.bunga8
+
+        val p3=Produk()
+        p3.nama="bunga 6"
+        p3.harga="Rp 900.000"
+        p3.gambar=R.drawable.bunga9
+
+        arr.add(p1)
+        arr.add(p2)
+        arr.add(p3)
+
+        return arr
+    }
 }
