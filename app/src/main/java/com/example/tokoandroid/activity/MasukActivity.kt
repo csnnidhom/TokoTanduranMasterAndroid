@@ -18,8 +18,8 @@ class MasukActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_masuk)
 
-        btnProsesLogin = findViewById(R.id.btn_prosesLogin);
-        btnRegister = findViewById(R.id.btn_register);
+        btnProsesLogin = findViewById(R.id.btn_prosesLogin)
+        btnRegister = findViewById(R.id.btn_register)
 
         s = SharedPref(this)
 
@@ -28,11 +28,11 @@ class MasukActivity : AppCompatActivity() {
 
     private fun mainButton(){
         btnProsesLogin.setOnClickListener{
-            s.setStatusLogin(true);
+            startActivity(Intent(this, LoginActivity::class.java))
         }
 
         btnRegister.setOnClickListener{
-            startActivity(Intent(this, RegisterActivity::class.java));
+            startActivity(Intent(this, RegisterActivity::class.java))
         }
     }
 

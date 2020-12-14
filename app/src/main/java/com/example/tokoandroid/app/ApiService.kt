@@ -24,7 +24,7 @@ interface ApiService {
     fun login(
         @Field("email") email :String,
         @Field("password") password :String
-    ):Call<ResponseBody>
+    ):Call<ResponModel>
 
     /*@GET("produk")
     fun getProduk():Call<ResponseBody>*/
