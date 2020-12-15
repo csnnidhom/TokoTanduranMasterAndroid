@@ -1,18 +1,25 @@
 package com.example.tokoandroid.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Adapter
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
+import com.example.tokoandroid.MainActivity
 import com.example.tokoandroid.R
 import com.example.tokoandroid.adapter.AdapterProduk
+import com.example.tokoandroid.app.ApiConfig
 import com.example.tokoandroid.model.Produk
+import com.example.tokoandroid.model.ResponModel
 import com.inyongtisto.tokoonline.adapter.AdapterSlider
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class HomeFragment : Fragment() {
@@ -28,11 +35,13 @@ class HomeFragment : Fragment() {
     ): View? {
         val view: View=inflater.inflate(R.layout.fragment_home, container, false)
 
-        vpSlider = view.findViewById(R.id.vp_slider)
-        rvProduk = view.findViewById(R.id.rv_produk)
-        rvProdukTerlaris = view.findViewById(R.id.rv_produkTerlaris)
-        rvProdukUnggulan = view.findViewById(R.id.rv_produkUnggulan)
+        init(view)
+        getProduk()
 
+        return view
+    }
+
+    fun displayProduk(){
         val arrSlider=ArrayList<Int>()
         arrSlider.add(R.drawable.slider3)
         arrSlider.add(R.drawable.slider2)
@@ -50,19 +59,42 @@ class HomeFragment : Fragment() {
         val layoutManager3= LinearLayoutManager(activity)
         layoutManager3.orientation = LinearLayoutManager.HORIZONTAL
 
-        rvProduk.adapter = AdapterProduk(arrProduk)
+        rvProduk.adapter = AdapterProduk(listProduk)
         rvProduk.layoutManager = layoutManager
 
-        rvProdukTerlaris.adapter = AdapterProduk(arrProdukTerlaris)
+        rvProdukTerlaris.adapter = AdapterProduk(listProduk)
         rvProdukTerlaris.layoutManager = layoutManager2
 
-        rvProdukUnggulan.adapter = AdapterProduk(arrProdukUnggulan)
+        rvProdukUnggulan.adapter = AdapterProduk(listProduk)
         rvProdukUnggulan.layoutManager = layoutManager3
-
-        return view
     }
 
-    val arrProduk: ArrayList<Produk>get(){
+    private var listProduk: ArrayList<Produk> = ArrayList()
+    fun getProduk(){
+        ApiConfig.instanceRetrofit.getProduk().enqueue(object : Callback<ResponModel> {
+            override fun onResponse(call: Call<ResponModel>, response: Response<ResponModel>) {
+                val res = response.body()!!
+                if (res.succes == 1){
+                    listProduk = res.produks
+                    displayProduk()
+                }
+            }
+
+            override fun onFailure(call: Call<ResponModel>, t: Throwable) {
+
+            }
+        })
+
+    }
+
+    fun init(view: View){
+        vpSlider = view.findViewById(R.id.vp_slider)
+        rvProduk = view.findViewById(R.id.rv_produk)
+        rvProdukTerlaris = view.findViewById(R.id.rv_produkTerlaris)
+        rvProdukUnggulan = view.findViewById(R.id.rv_produkUnggulan)
+    }
+
+/*    val arrProduk: ArrayList<Produk>get(){
         val arr=ArrayList<Produk>()
         val p1=Produk()
         p1.nama="bunga 1"
@@ -133,4 +165,7 @@ class HomeFragment : Fragment() {
 
         return arr
     }
+
+ */
+
 }

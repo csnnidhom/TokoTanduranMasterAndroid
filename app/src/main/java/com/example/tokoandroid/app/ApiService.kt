@@ -26,6 +26,6 @@ interface ApiService {
         @Field("password") password :String
     ):Call<ResponModel>
 
-    /*@GET("produk")
-    fun getProduk():Call<ResponseBody>*/
+    @GET("produk")
+    fun getProduk():Call<ResponModel>
 }
