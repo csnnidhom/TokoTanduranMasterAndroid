@@ -6,7 +6,7 @@ public class Produk implements Serializable {
     public int id;
     public String name;
     public String harga;
-    public String descripsi;
+    public String deskripsi;
     public int category_id;
     public String image;
     public String created_at;

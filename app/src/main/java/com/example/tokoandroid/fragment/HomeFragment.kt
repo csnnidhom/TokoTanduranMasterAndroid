@@ -59,13 +59,13 @@ class HomeFragment : Fragment() {
         val layoutManager3= LinearLayoutManager(activity)
         layoutManager3.orientation = LinearLayoutManager.HORIZONTAL
 
-        rvProduk.adapter = AdapterProduk(listProduk)
+        rvProduk.adapter = AdapterProduk(requireActivity(), listProduk)
         rvProduk.layoutManager = layoutManager
 
-        rvProdukTerlaris.adapter = AdapterProduk(listProduk)
+        rvProdukTerlaris.adapter = AdapterProduk(requireActivity(), listProduk)
         rvProdukTerlaris.layoutManager = layoutManager2
 
-        rvProdukUnggulan.adapter = AdapterProduk(listProduk)
+        rvProdukUnggulan.adapter = AdapterProduk(requireActivity(), listProduk)
         rvProdukUnggulan.layoutManager = layoutManager3
     }
 
