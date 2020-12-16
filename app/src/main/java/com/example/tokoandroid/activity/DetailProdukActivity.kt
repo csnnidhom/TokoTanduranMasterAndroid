@@ -39,7 +39,7 @@ class DetailProdukActivity : AppCompatActivity() {
         tvHarga.text = Helper().gantiRupiah(produk.harga)
         tvDeskripsi.text = produk.deskripsi
 
-        val img = "http://192.168.1.64/AdminTanduran/public/storage/produk/"+produk.image
+        val img = "http://192.168.1.64/AdminTokoTanduranMasterWebsite/public/storage/produk/"+produk.image
         Picasso.get()
                 .load(img)
                 .placeholder(R.drawable.bunga1)
