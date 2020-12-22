@@ -75,11 +75,11 @@ class RegisterActivity : AppCompatActivity() {
                     //berhasil
                     progressBar.visibility = View.GONE
                     s.setStatusLogin(true)
-                    val intent = Intent(this@RegisterActivity, MainActivity::class.java)
+                    val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
                     startActivity(intent)
                     finish()
-                    Toast.makeText(this@RegisterActivity, "Selamat Datang "+respon.user.name, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@RegisterActivity, "Selamat Datang "+respon.user.name+ " Silahkan Login", Toast.LENGTH_SHORT).show()
                 }else{
                     //gagal
                     progressBar.visibility = View.GONE
