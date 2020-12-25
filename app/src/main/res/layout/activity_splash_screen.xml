@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/iv_logo_splash_screen"
+                android:layout_width="wrap_content"
+                android:layout_height="300dp"
+                android:background="@drawable/bunga_splash_screen"/>
+
+            <TextView
+                android:id="@+id/tulisan_logo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="T a n d u r a n"
+                android:textSize="40dp"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/flower"
+                android:textStyle="bold|italic"
+                android:paddingTop="180dp"
+                android:textColor="@color/black"
+                android:gravity="center"/>
+
+            <ProgressBar
+                android:id="@+id/splash_screen_progress_bar"
+                android:layout_below="@+id/tulisan_logo"
+                android:paddingTop="50dp"
+                style="@android:style/Widget.DeviceDefault.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:progressTint="#6995c1"
+                android:layout_margin="20dp" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
