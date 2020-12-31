@@ -3,7 +3,7 @@ package com.example.tokoandroid.activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
+import android.view.View
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
@@ -17,9 +17,11 @@ import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
+import kotlinx.android.synthetic.main.toolbar_custom.*
 
 class DetailProdukActivity : AppCompatActivity() {
 
+    lateinit var myDb :MyDatabase
     lateinit var produk: Produk
     lateinit var tvNama: TextView
     lateinit var tvHarga: TextView
@@ -39,18 +41,20 @@ class DetailProdukActivity : AppCompatActivity() {
         nameToolbar = findViewById(R.id.toolbar)
         btnKeranjang = findViewById(R.id.btn_keranjang)
         btnFavorit = findViewById(R.id.btn_favorit)
+        myDb= MyDatabase.getInstance(this)!!
 
         getInfo()
         mainButton()
+        cekKeranjang()
     }
 
-    fun mainButton(){
+    private fun mainButton(){
         btnKeranjang.setOnClickListener{
             insert()
         }
 
         btnFavorit.setOnClickListener{
-            val myDb: MyDatabase = MyDatabase.getInstance(this)!! // call database
+
             val listData = myDb.daoKeranjang().getAll() // get All data
             for(note :Produk in listData){
                 println("-----------------------")
@@ -60,18 +64,28 @@ class DetailProdukActivity : AppCompatActivity() {
         }
     }
 
-    fun insert(){
-        val myDb: MyDatabase = MyDatabase.getInstance(this)!! // call database
-
+    private fun insert(){
         CompositeDisposable().add(Observable.fromCallable { myDb.daoKeranjang().insert(produk) }
             .subscribeOn(Schedulers.computation())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe {
+                cekKeranjang()
                 Log.d("respons", "data inserted")
             })
     }
 
-    fun getInfo(){
+    private fun cekKeranjang(){
+        val dataKeranjang = myDb.daoKeranjang().getAll()
+
+        if (dataKeranjang.isNotEmpty()){
+            div_angka.visibility = View.VISIBLE
+            tv_angka.text = dataKeranjang.size.toString()
+        }else{
+            div_angka.visibility = View.GONE
+        }
+    }
+
+    private fun getInfo(){
         val data = intent.getStringExtra("extra")
         produk = Gson().fromJson<Produk>(data, Produk::class.java)
 
