@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
+import android.widget.Toast
 import com.example.tokoandroid.R
 import com.example.tokoandroid.helper.Helper
 import com.example.tokoandroid.model.Produk
@@ -50,7 +51,13 @@ class DetailProdukActivity : AppCompatActivity() {
 
     private fun mainButton(){
         btnKeranjang.setOnClickListener{
-            insert()
+            val data = myDb.daoKeranjang().getProduk(produk.id)
+            if (data == null){
+                insert()
+            }else{
+                data.jumlah = data.jumlah + 1
+                update(data)
+            }
         }
 
         btnFavorit.setOnClickListener{
@@ -64,6 +71,7 @@ class DetailProdukActivity : AppCompatActivity() {
         }
     }
 
+
     private fun insert(){
         CompositeDisposable().add(Observable.fromCallable { myDb.daoKeranjang().insert(produk) }
             .subscribeOn(Schedulers.computation())
@@ -71,7 +79,19 @@ class DetailProdukActivity : AppCompatActivity() {
             .subscribe {
                 cekKeranjang()
                 Log.d("respons", "data inserted")
+                Toast.makeText(this,"Berhasil Menambahkan", Toast.LENGTH_LONG).show()
             })
+    }
+
+    private fun update(data: Produk){
+        CompositeDisposable().add(Observable.fromCallable { myDb.daoKeranjang().update(data) }
+                .subscribeOn(Schedulers.computation())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe {
+                    cekKeranjang()
+                    Log.d("respons", "data inserted")
+                    Toast.makeText(this,"Berhasil Menambahkan", Toast.LENGTH_LONG).show()
+                })
     }
 
     private fun cekKeranjang(){

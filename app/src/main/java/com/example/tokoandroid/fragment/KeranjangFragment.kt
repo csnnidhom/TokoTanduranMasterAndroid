@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Delete
 import com.example.tokoandroid.R
+import com.example.tokoandroid.adapter.AdapterKeranjang
 import com.example.tokoandroid.adapter.AdapterProduk
 import com.example.tokoandroid.room.MyDatabase
 
@@ -37,7 +38,7 @@ class KeranjangFragment : Fragment() {
         val layoutManager = LinearLayoutManager(activity)
         layoutManager.orientation = LinearLayoutManager.VERTICAL
 
-        rvProduk.adapter = AdapterProduk(requireActivity(), listProduk)
+        rvProduk.adapter = AdapterKeranjang(requireActivity(), listProduk)
         rvProduk.layoutManager = layoutManager
     }
 
