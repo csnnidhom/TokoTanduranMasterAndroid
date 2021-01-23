@@ -1,5 +1,6 @@
 package com.example.tokoandroid.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +9,7 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.example.tokoandroid.R
 import com.example.tokoandroid.helper.Helper
 import com.example.tokoandroid.model.Produk
@@ -73,10 +75,11 @@ class DetailProdukActivity : AppCompatActivity() {
             }
         }
 
-        /*btnToKeranjang.setOnClickListener{
+        btnToKeranjang.setOnClickListener{
                 val intent = Intent("event:keranjang")
-                LocalBroad
-        }*/
+                LocalBroadcastManager.getInstance(this).sendBroadcast(intent)
+                onBackPressed()
+        }
     }
 
 
