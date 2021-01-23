@@ -29,6 +29,7 @@ class DetailProdukActivity : AppCompatActivity() {
     lateinit var imgImage: ImageView
     lateinit var tvDeskripsi: TextView
     lateinit var btnKeranjang: RelativeLayout
+    lateinit var btnToKeranjang: RelativeLayout
     lateinit var btnFavorit: RelativeLayout
     lateinit var nameToolbar: androidx.appcompat.widget.Toolbar
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,6 +42,8 @@ class DetailProdukActivity : AppCompatActivity() {
         imgImage = findViewById(R.id.iv_image)
         nameToolbar = findViewById(R.id.toolbar)
         btnKeranjang = findViewById(R.id.btn_keranjang)
+        btnToKeranjang = findViewById(R.id.btn_ToKeranjang)
+
         btnFavorit = findViewById(R.id.btn_favorit)
         myDb= MyDatabase.getInstance(this)!!
 
@@ -69,6 +72,11 @@ class DetailProdukActivity : AppCompatActivity() {
                 println(note.harga)
             }
         }
+
+        /*btnToKeranjang.setOnClickListener{
+                val intent = Intent("event:keranjang")
+                LocalBroad
+        }*/
     }
 
 
@@ -114,7 +122,7 @@ class DetailProdukActivity : AppCompatActivity() {
         tvHarga.text = Helper().gantiRupiah(produk.harga)
         tvDeskripsi.text = produk.deskripsi
 
-        val img = "http://192.168.1.64/AdminTokoTanduranMasterWebsite/public/storage/produk/"+produk.image
+        val img = "http://192.168.1.19/AdminTokoTanduranMasterWebsite/public/storage/produk/"+produk.image
         Picasso.get()
                 .load(img)
                 .placeholder(R.drawable.bunga1)

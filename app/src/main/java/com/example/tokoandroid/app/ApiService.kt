@@ -20,7 +20,7 @@ interface ApiService {
     ):Call<ResponModel>
 
     @FormUrlEncoded
-    @POST("login")
+    @POST("welcome")
     fun login(
         @Field("email") email :String,
         @Field("password") password :String

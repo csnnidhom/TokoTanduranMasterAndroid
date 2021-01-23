@@ -16,13 +16,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Selamat Datang"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:textColor="@color/design_default_color_primary_dark"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Toko Onilne Tanduran"
-            android:textSize="30dp"
+            android:textSize="30sp"
             android:textStyle="bold"
             android:textColor="@color/design_default_color_primary_dark"/>
         <ImageView
@@ -30,18 +30,24 @@
             android:layout_height="250dp"
             android:src="@drawable/bunga_login"
             android:layout_marginTop="10dp"/>
+
         <Button
             android:id="@+id/btn_prosesLogin"
-            android:layout_width="170dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/bg_btn_login1"
             android:text="Masuk" />
         <Button
             android:id="@+id/btn_register"
-            android:layout_width="170dp"
+            android:background="@drawable/bg_btn_register"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
             android:text="Daftar"
             android:layout_marginTop="10dp"/>
-
     </LinearLayout>
 
 </RelativeLayout>

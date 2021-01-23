@@ -42,12 +42,11 @@
                         android:id="@+id/edt_nama"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
-                        android:background="@null"
+                        android:background="@drawable/input_text"
                         android:hint="Nama Lengkap"
                         android:inputType="text"
                         android:maxLines="1"
                         android:singleLine="true" />
-
                 </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
@@ -55,8 +54,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#CACACA" />
-
+                android:background="#D0CFCF" />
         </LinearLayout>
 
         <LinearLayout
@@ -86,7 +84,7 @@
                         android:id="@+id/edt_email"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
-                        android:background="@null"
+                        android:background="@drawable/input_text"
                         android:hint="Email"
                         android:inputType="textEmailAddress"
                         android:maxLines="1"
@@ -99,7 +97,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#CACACA" />
+                android:background="#D0CFCF" />
 
         </LinearLayout>
 
@@ -130,12 +128,11 @@
                         android:id="@+id/edt_phone"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
-                        android:background="@null"
+                        android:background="@drawable/input_text"
                         android:hint="Nomor Telepon"
                         android:inputType="phone"
                         android:maxLines="1"
                         android:singleLine="true" />
-
                 </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
@@ -143,7 +140,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#CACACA" />
+                android:background="#D0CFCF" />
 
         </LinearLayout>
 
@@ -175,7 +172,7 @@
                         android:id="@+id/edt_password"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
-                        android:background="@null"
+                        android:background="@drawable/input_text"
                         android:hint="Password"
                         android:inputType="textPassword"
                         android:maxLines="1"
@@ -197,7 +194,7 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="30dp"
-            android:background="@drawable/bg_btn_login1"
+            android:background="@drawable/bg_btn_register"
             android:text="Register"
             android:textColor="@color/white" />
 

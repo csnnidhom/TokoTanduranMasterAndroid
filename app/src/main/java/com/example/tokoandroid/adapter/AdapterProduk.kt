@@ -36,7 +36,7 @@ class AdapterProduk(var activity: Activity, var data:ArrayList<Produk>): Recycle
         holder.tvHarga.text = Helper().gantiRupiah(data[position].harga)
 //        holder.imgProduk.setImageResource(data[position].image)
 
-        val image = "http://192.168.1.64/AdminTokoTanduranMasterWebsite/public/storage/produk/"+data[position].image
+        val image = "http://192.168.1.19/AdminTokoTanduranMasterWebsite/public/storage/produk/"+data[position].image
         Picasso.get()
                 .load(image)
                 .placeholder(R.drawable.bunga1)
