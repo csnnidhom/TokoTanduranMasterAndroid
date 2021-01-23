@@ -16,6 +16,7 @@ import com.example.tokoandroid.adapter.AdapterProduk
 import com.example.tokoandroid.room.MyDatabase
 
 class KeranjangFragment : Fragment() {
+    lateinit var myDb: MyDatabase
     lateinit var btnDelete: ImageView
     lateinit var rvProduk: RecyclerView
     lateinit var tvTotal: TextView

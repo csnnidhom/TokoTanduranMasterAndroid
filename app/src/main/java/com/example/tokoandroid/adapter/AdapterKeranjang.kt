@@ -52,6 +52,7 @@ class AdapterKeranjang(var activity: Activity, var data:ArrayList<Produk>): Recy
 
         var jumlah = data[position].jumlah
         holder.tvJumlah.text = jumlah.toString()
+
         val image = "http://192.168.1.19/AdminTokoTanduranMasterWebsite/public/storage/produk/"+data[position].image
         Picasso.get()
                 .load(image)
